@@ -1,0 +1,18 @@
+*{
+	display:block;
+}
+#cuado1,#cuadro2,#cuadro3,#cuadro4{
+	width: 25%;
+}
+#cuadro1{
+	background: red;
+}
+#cuadro2{
+	background: blue;
+}
+#cuadro3{
+	background: green;
+}
+#cuadro4{
+	background: orange;
+}
