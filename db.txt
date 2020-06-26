@@ -1,0 +1,60 @@
+CREATE DATABASE pcs;
+use pcs;
+CREATE TABLE usuario(
+	idUsuario INT(11) NOT NULL AUTO_INCREMENT,
+	Nombre_completo VARCHAR(255),
+	PRIMARY KEY (idUsuario)
+);
+
+
+
+CREATE TABLE libro(
+	idLibro INT(11) NOT NULL AUTO_INCREMENT,
+	Titulo VARCHAR(255),
+	Autor TEXT,
+	anio VARCHAR(10),
+	Edicion VARCHAR(20),
+	ISBN TEXT,
+	PRIMARY KEY (idLibro)
+);
+
+
+CREATE TABLE prestamo(
+	idlibro INT(11) NOT NULL ,
+	idusuario INT(11) NOT NULL ,
+	FechaEntrega VARCHAR(255),
+	FechaSalida VARCHAR(255),
+	FOREIGN KEY (idlibro) REFERENCES libro(idLibro) ON DELETE CASCADE,
+	FOREIGN KEY (idusuario)	REFERENCES usuario(idUsuario) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+
+INSERT INTO usuario (idUsuario,Nombre_completo) VALUES(1,"JUAN");
+INSERT INTO usuario (idUsuario,Nombre_completo) VALUES(2,"MARIA");
+INSERT INTO usuario (idUsuario,Nombre_completo) VALUES(3,"PEDRO");
+
+INSERT INTO libro (idLibro,Titulo,Autor,anio,Edicion,ISBN) VALUES (1,"ARITMÉTICA",'DR. AURELIO BALDOR. ','1983',"XII",'84-357-0079-8');
+INSERT INTO libro (idLibro,Titulo,Autor,anio,Edicion,ISBN) VALUES (2,"ALIMENTACIÓN SANA FUENTE DE VIDA:SABER COMER EL SECRETO DE UNA LARGA VIDA",'MARÍA CRISTINA RINCÓN ','1999',"I",'958-30-0710-2');
+INSERT INTO libro (idLibro,Titulo,Autor,anio,Edicion,ISBN) VALUES (3,"HASTA QUE TÚ LLEGASTE",'MARION S. LEE ','2017',"I",'978-84-9070-411-0');
+INSERT INTO libro (idLibro,Titulo,Autor,anio,Edicion,ISBN) VALUES (4,"INTELIGENCIA EMOCIONAL PARA TODOS",'ANTÓN TERUEL','2004',"I",'970-732-057-5');
+INSERT INTO libro (idLibro,Titulo,Autor,anio,Edicion,ISBN) VALUES (5,"GENTE TÓXICA",'BERNARDO STAMATEAS','2008',"I",'978-607-316-703-1');
+
+INSERT INTO prestamo(idlibro,idusuario,FechaEntrega,FechaSalida) VALUES (1,1,'28-06-2020','25-06-2020');
+INSERT INTO prestamo(idlibro,idusuario,FechaEntrega,FechaSalida) VALUES (2,1,'28-06-2020','25-06-2020');
+INSERT INTO prestamo(idlibro,idusuario,FechaEntrega,FechaSalida) VALUES (3,2,'28-06-2020','25-06-2020');
+INSERT INTO prestamo(idlibro,idusuario,FechaEntrega,FechaSalida) VALUES (4,2,'28-06-2020','25-06-2020');
+
+
+
+
+
+
+SELECT l.idLibro,l.Titulo,l.Autor,l.ISBN from libro as l; 
+SELECT u.idUsuario,u.Nombre_completo from usuario as u;
+SELECT p.idlibro,p.idusuario,p.FechaEntrega,p.FechaSalida from prestamo as p;
+
+SELECT libro.Titulo,prestamo.idusuario from  prestamo inner join libro on prestamo.idlibro=libro.idLibro
+UNION
+SELECT prestamo.idusuario,usuario.Nombre_completo from prestamo left join usuario on prestamo.idusuario=usuario.idUsuario; 
+
+

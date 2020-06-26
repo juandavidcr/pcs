@@ -1,0 +1,66 @@
+1P: ¿En qué lugar se ejecuta el código PHP?
+
+R: Servidor
+
+
+2P: Explica “_construct()” y “_destruct()”
+
+R: En PHP, los objetos pertenecientes a una clase tienen integradas opciones Construct y Destruct.
+Una vez hayas creado un nuevo objeto  dentro de una clase, la opción construct automáticamente estará disponible dentro del mismo. 
+Esto permite al objeto copiar los parámetros y configuraciones de la clase y automáticamente asignarlos asi mismos.
+Por otro lado, si destruct se encuentra disponible, automáticamente eliminará todos y cada uno de los ajustes del nuevo objeto.
+
+
+3P: ¿Cuál es la diferencia entre “==” y “===”?
+
+R: == (Igual) debería utilizarse cuando quieres comprobar que dos valores de operadores separados son iguales o no. 
+Por otro lado, === (Idénticos),  debería ser utilizado cuando requieras una respuesta específica, 
+comprueba no solo los valores sino también los tipos de operadores.
+
+
+4P: Explique a que se refieren las variables Locales y Globales?
+
+R: las variables locales solo pueden ser accesadas dentro de una funcion, clase o script definido. Las variables Globales son accesibles desde cualquier Script php.
+
+
+5P: Mencione las variables superglobales predefinidas en php.
+
+R: $_COOKIE, $_GET, $_REQUEST, $_SERVER, $_ENV, $_GLOBALS, $_POST, $_SESSION
+
+
+6P: Explique si el siguiente codigo es seguro o inseguro.
+
+<?php
+	$name = $_GET['name'];
+	eval($name);
+?>
+
+R: es muy peligroso si se utiliza con datos manipulados. 
+Por ejemplo si usa una variable $name que haya sido vulnerada, un atacante puede ejecutar código arbitrario de PHP
+
+
+7P: Que es un framework y menciona algunos de php que conozcas
+
+R: Desarrollar una aplicación o un sitio web desde cero implica mucho trabajo. En muchos casos, 
+tendrás que recrear funciones que ya se han hecho miles de veces, lo cual es tan eficiente como reinventar la rueda. 
+Un framework o entorno de trabajo puede ayudarte a resolver este problema, al darte una base sobre la que puedes construir.
+Laravel, CodeIgniter, Symfony, Zend, Phalcon, CakePHP, Yii, FuelPHP, 
+
+
+8P: ¿Puede el valor de un cambio constante durante la ejecución del script?
+
+R: Mientras dura la ejecución de PHP, no se puede cambiar el valor de una constante, porque ya se ha declarado.
+
+9P: Suponga que recibe un formulario enviado por correo para suscribirse a un boletín informativo. Este formulario sólo tiene un campo, un campo de texto de entrada llamado email. ¿Cómo validaría si el campo está vacío? Imprima el mensaje 'El correo electrónico no puede estar vacío' en este caso.
+
+R:<?php
+if(empty($_POST['email'])){
+  echo "El correo electronico no puede estar vacio";
+}
+?>
+
+10P: ¿Cuáles son los 3 niveles de alcance (scope levels) disponibles en PHP y cómo los definiría?
+
+R:Privado (private): Es visible sólo en su clase propia.
+Público (public): Es visible con cualquier código que pueda acceder a la clase.
+Protegido (protected): Se puede ver sólo para clases padre(s) y clases que agranden la clase actual.
