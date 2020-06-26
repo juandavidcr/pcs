@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>prueba1</title>
+    <style> 
+        .elem1{
+            background-color: aqua;
+            width: 12em;
+            height:12em;
+        }
+        .elem2{
+            background-color: lime;
+            width: 12em;
+            height:12em;
+        }
+        .elem3{
+            background-color: blue;
+            width: 12em;
+            height:12em;
+            
+        }
+        .elem4{
+            background-color: silver;
+            width: 12em;
+            height:12em;
+        }
+        .row{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- <button onclick="mostrarOcultar();">
+        Mostrar u ocultar
+    </button> -->
+    
+    <span class="row">
+        <div style="display: block;" id="div1" class="elem1">
+          
+        </div>
+        <div style="display: block;" id="div2" class="elem2">
+              
+        </div>
+
+    </span>
+    <span class="row">
+        <div style="display: block;" id="div3" class="elem3">
+              
+        </div>
+        <div style="display: block;" id="div4" class="elem4">
+              
+        </div>
+    </span>
+
+    <script>
+          
+        function sleep(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        
+       async function mostrarOcultar() {
+            for (var i=1;i<5;i++){
+                var x = document.getElementById("div"+i);
+                if (x.style.display === "block") {
+                   await sleep(5000);
+                   x.style.display = "none";
+                }else{
+                    console.log("No entro")
+                }
+                
+            }
+            
+        }
+       // 
+        //console.log("afuera del delay");
+        async function delayed() {
+          console.log("Entro a delay");
+          mostrarOcultar();
+
+        }
+         delayed();       
+        </script>
+</body>
+</html>
